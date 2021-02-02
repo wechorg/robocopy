@@ -34,6 +34,7 @@ jobs:
       - name: create file in test1 folder
         run: echo sometext > .\test1\random.txt
       - name: use robocopy to copy the text
+        shell: cmd
         run: (robocopy .\test1\ .\test2\) ^& IF %ERRORLEVEL% LEQ 4 exit /B 0
       - name: check if the file was indeed copied
         run: |
