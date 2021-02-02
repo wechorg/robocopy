@@ -24,22 +24,21 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
-      # Runs a single command using the runners shell
-      - name: Make Directory1
-        run: mkdir test
-      - name: Make Directory2
-        run: mkdir test2
-        
-      - name: Log Directory Structure
-        run: dir
-
-      
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        shell: powershell
+                    # Runs a set of commands using the runners shell
+      - name: Create test folders     
         run: |
-          mkdir test4
-          mkdir test6
+          mkdir test1
+          mkdir test2
           dir
+
+      - name: create file in test1 folder
+        run: echo sometext > .\test1\random.txt
+      - name: use robocopy to copy the text
+        run: robocopy .\test1\ .\test2\
+      - name: check if the file was indeed copied
+        run: |
+          cd .\test2\
+          ls
+
+
           
