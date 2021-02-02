@@ -40,6 +40,6 @@ jobs:
         shell: powershell
         run: |
           mkdir test4
-          mdkir test6
+          mkdir test6
           dir
           
